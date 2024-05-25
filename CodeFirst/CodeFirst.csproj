@@ -5,10 +5,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6D2EC3D4-93D0-42DE-B886-EE22D562198D}</ProjectGuid>
+    <ProjectGuid>{B8A654BD-62B0-4206-AB59-F6717ABF1659}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>DBFirstPractice</RootNamespace>
-    <AssemblyName>DBFirstPractice</AssemblyName>
+    <RootNamespace>CodeFirst</RootNamespace>
+    <AssemblyName>CodeFirst</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,8 +45,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,76 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Author.cs">
-      <DependentUpon>PlutoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Cours.cs">
-      <DependentUpon>PlutoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CourseSection.cs">
-      <DependentUpon>PlutoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="funcGetAuthorCourses_Result.cs">
-      <DependentUpon>PlutoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GetCourses_Result.cs">
-      <DependentUpon>PlutoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PlutoModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PlutoModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PlutoModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PlutoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PlutoModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PlutoModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Post.cs">
-      <DependentUpon>PlutoModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Author.cs" />
+    <Compile Include="Course.cs" />
+    <Compile Include="CourseLevel.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PlutoContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Student.cs">
-      <DependentUpon>PlutoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tag.cs">
-      <DependentUpon>PlutoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblUser.cs">
-      <DependentUpon>PlutoModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Tag.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="PlutoModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PlutoModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="packages.config" />
-    <None Include="PlutoModel.edmx.diagram">
-      <DependentUpon>PlutoModel.edmx</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="PlutoModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PlutoModel.Context.cs</LastGenOutput>
-      <DependentUpon>PlutoModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="PlutoModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PlutoModel.edmx</DependentUpon>
-      <LastGenOutput>PlutoModel.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

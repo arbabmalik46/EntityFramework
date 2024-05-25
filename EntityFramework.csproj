@@ -84,11 +84,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
     <EntityDeploy Include="Person.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Person.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="packages.config" />
     <None Include="Person.edmx.diagram">
       <DependentUpon>Person.edmx</DependentUpon>
     </None>
