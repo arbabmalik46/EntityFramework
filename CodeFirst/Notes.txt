@@ -1,0 +1,6 @@
+1. Add Model Classes
+2. Add DBSet<T> properties of models
+3. Add a connection string in app.config
+4. Add a context class which inherits the DBContext
+5. If you have changed the connection string to anything then make a constructor in the context class that is made which inherits the DBContext class and give the parameter name of the context like :base("name=DefaultConnection")
+6. Run command enable-migrations to enable the migrations of the project.
