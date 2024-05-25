@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PracticeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="GenreID" />
+          </Key>
+          <Property Name="GenreID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="VideoGenreAssociation">
+          <Key>
+            <PropertyRef Name="VideoGenreID" />
+          </Key>
+          <Property Name="VideoGenreID" Type="int" Nullable="false" />
+          <Property Name="VideoID" Type="bigint" />
+          <Property Name="GenreID" Type="int" />
+        </EntityType>
+        <EntityType Name="Videos">
+          <Key>
+            <PropertyRef Name="VideoID" />
+          </Key>
+          <Property Name="VideoID" Type="bigint" Nullable="false" />
+          <Property Name="VideoName" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK__VideoGenr__Genre__2F10007B">
+          <End Role="Genre" Type="Self.Genre" Multiplicity="0..1" />
+          <End Role="VideoGenreAssociation" Type="Self.VideoGenreAssociation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="GenreID" />
+            </Principal>
+            <Dependent Role="VideoGenreAssociation">
+              <PropertyRef Name="GenreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VideoGenr__Video__2E1BDC42">
+          <End Role="Videos" Type="Self.Videos" Multiplicity="0..1" />
+          <End Role="VideoGenreAssociation" Type="Self.VideoGenreAssociation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Videos">
+              <PropertyRef Name="VideoID" />
+            </Principal>
+            <Dependent Role="VideoGenreAssociation">
+              <PropertyRef Name="VideoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spAddVideo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="ID" Type="bigint" Mode="In" />
+        </Function>
+        <EntityContainer Name="PracticeDBModelStoreContainer">
+          <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VideoGenreAssociation" EntityType="Self.VideoGenreAssociation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Videos" EntityType="Self.Videos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__VideoGenr__Genre__2F10007B" Association="Self.FK__VideoGenr__Genre__2F10007B">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="VideoGenreAssociation" EntitySet="VideoGenreAssociation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VideoGenr__Video__2E1BDC42" Association="Self.FK__VideoGenr__Video__2E1BDC42">
+            <End Role="Videos" EntitySet="Videos" />
+            <End Role="VideoGenreAssociation" EntitySet="VideoGenreAssociation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PracticeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="GenreID" />
+          </Key>
+          <Property Name="GenreID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="VideoGenreAssociations" Relationship="Self.FK__VideoGenr__Genre__2F10007B" FromRole="Genre" ToRole="VideoGenreAssociation" />
+        </EntityType>
+        <EntityType Name="VideoGenreAssociation">
+          <Key>
+            <PropertyRef Name="VideoGenreID" />
+          </Key>
+          <Property Name="VideoGenreID" Type="Int32" Nullable="false" />
+          <Property Name="VideoID" Type="Int64" />
+          <Property Name="GenreID" Type="Int32" />
+          <NavigationProperty Name="Genre" Relationship="Self.FK__VideoGenr__Genre__2F10007B" FromRole="VideoGenreAssociation" ToRole="Genre" />
+          <NavigationProperty Name="Video" Relationship="Self.FK__VideoGenr__Video__2E1BDC42" FromRole="VideoGenreAssociation" ToRole="Videos" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="VideoID" />
+          </Key>
+          <Property Name="VideoID" Type="Int64" Nullable="false" />
+          <Property Name="VideoName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="VideoGenreAssociations" Relationship="Self.FK__VideoGenr__Video__2E1BDC42" FromRole="Videos" ToRole="VideoGenreAssociation" />
+        </EntityType>
+        <Association Name="FK__VideoGenr__Genre__2F10007B">
+          <End Role="Genre" Type="Self.Genre" Multiplicity="0..1" />
+          <End Role="VideoGenreAssociation" Type="Self.VideoGenreAssociation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="GenreID" />
+            </Principal>
+            <Dependent Role="VideoGenreAssociation">
+              <PropertyRef Name="GenreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VideoGenr__Video__2E1BDC42">
+          <End Role="Videos" Type="Self.Video" Multiplicity="0..1" />
+          <End Role="VideoGenreAssociation" Type="Self.VideoGenreAssociation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Videos">
+              <PropertyRef Name="VideoID" />
+            </Principal>
+            <Dependent Role="VideoGenreAssociation">
+              <PropertyRef Name="VideoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PracticeDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Genres" EntityType="Self.Genre" />
+          <EntitySet Name="VideoGenreAssociations" EntityType="Self.VideoGenreAssociation" />
+          <EntitySet Name="Videos" EntityType="Self.Video" />
+          <AssociationSet Name="FK__VideoGenr__Genre__2F10007B" Association="Self.FK__VideoGenr__Genre__2F10007B">
+            <End Role="Genre" EntitySet="Genres" />
+            <End Role="VideoGenreAssociation" EntitySet="VideoGenreAssociations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VideoGenr__Video__2E1BDC42" Association="Self.FK__VideoGenr__Video__2E1BDC42">
+            <End Role="Videos" EntitySet="Videos" />
+            <End Role="VideoGenreAssociation" EntitySet="VideoGenreAssociations" />
+          </AssociationSet>
+          <FunctionImport Name="AddVideo">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PracticeDBModelStoreContainer" CdmEntityContainer="PracticeDBEntities">
+          <EntitySetMapping Name="Genres">
+            <EntityTypeMapping TypeName="PracticeDBModel.Genre">
+              <MappingFragment StoreEntitySet="Genre">
+                <ScalarProperty Name="GenreID" ColumnName="GenreID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoGenreAssociations">
+            <EntityTypeMapping TypeName="PracticeDBModel.VideoGenreAssociation">
+              <MappingFragment StoreEntitySet="VideoGenreAssociation">
+                <ScalarProperty Name="VideoGenreID" ColumnName="VideoGenreID" />
+                <ScalarProperty Name="VideoID" ColumnName="VideoID" />
+                <ScalarProperty Name="GenreID" ColumnName="GenreID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Videos">
+            <EntityTypeMapping TypeName="PracticeDBModel.Video">
+              <MappingFragment StoreEntitySet="Videos">
+                <ScalarProperty Name="VideoID" ColumnName="VideoID" />
+                <ScalarProperty Name="VideoName" ColumnName="VideoName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddVideo" FunctionName="PracticeDBModel.Store.spAddVideo" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
