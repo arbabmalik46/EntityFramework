@@ -1,0 +1,6 @@
+If you want to use the Code First Approach, then follow these steps:
+1. First Add a new file of ADO.NET Model Entity
+2. Add a new connection string, and check the connection
+3. If you are facing the error in enabling migrations, then change then parameter name to the app.config connection string name.
+4. Now run the command enable-migrations.
+5. Then add the migration, add-migration (name).
