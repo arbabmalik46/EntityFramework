@@ -9,4 +9,4 @@ If you want to use the Code First Approach, then follow these steps:
 8. You can make the ID auto increment with property identity, if it's true then you can only assign the values to other things, but if it is false then you have to give the ID values speratedly.
 9. If you want to modify a class. you can add a new migration and update it to database after model changes. But always remember, it will affect all the records in database.
 For example, if you want to modify a name property then use the RenameColumn method in MigrationClass of that migration
-10. 
+10. If you want to revert the migration to a previous migration. Simply run the command: update-database -TargetMigration:<MigrationName>
