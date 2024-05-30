@@ -4,3 +4,9 @@ If you want to use the Code First Approach, then follow these steps:
 3. If you are facing the error in enabling migrations, then change then parameter name to the app.config connection string name.
 4. Now run the command enable-migrations.
 5. Then add the migration, add-migration (name).
+6. After that, you need to add-migration with same name, so we need to add a switch to tell the entity framework that we have all the changes made in our migration related to db tables and etc. For this, we need to run this command: add-migration (same name) -IgnoreChanges -Force 
+7. the force switch will override the migration.
+8. You can make the ID auto increment with property identity, if it's true then you can only assign the values to other things, but if it is false then you have to give the ID values speratedly.
+9. If you want to modify a class. you can add a new migration and update it to database after model changes. But always remember, it will affect all the records in database.
+For example, if you want to modify a name property then use the RenameColumn method in MigrationClass of that migration
+10. 

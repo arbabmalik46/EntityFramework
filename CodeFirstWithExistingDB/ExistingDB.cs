@@ -13,6 +13,7 @@ namespace CodeFirstWithExistingDB
         }
 
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        
         public virtual DbSet<Authors> Authors { get; set; }
         public virtual DbSet<Courses> Courses { get; set; }
         public virtual DbSet<Genre> Genre { get; set; }
