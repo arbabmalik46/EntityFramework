@@ -10,3 +10,12 @@ If you want to use the Code First Approach, then follow these steps:
 9. If you want to modify a class. you can add a new migration and update it to database after model changes. But always remember, it will affect all the records in database.
 For example, if you want to modify a name property then use the RenameColumn method in MigrationClass of that migration
 10. If you want to revert the migration to a previous migration. Simply run the command: update-database -TargetMigration:<MigrationName>
+Next Section:
+Overriding Code-First Conventions
+Intro:
+If you want to change the code first migrations, there are two ways to do that.
+1. Fluent Api
+2. Data Annotation
+For Data Annotation just go to entity class and make a column required us can use attribute [Required] over the column. Add the migration and persit it to db using update-database command.
+For more you can use this link https://www.bytehide.com/blog/data-annotations-in-csharp
+For Fluent API, you can go to the context class of your context. Go to onModelCreating and use modelBuidler property. 
