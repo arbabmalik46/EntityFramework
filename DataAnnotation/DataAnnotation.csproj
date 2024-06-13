@@ -5,10 +5,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D2BF130B-D8B8-47B4-9F5D-055A580F079F}</ProjectGuid>
+    <ProjectGuid>{274EB583-B06D-43CA-8BF1-EAC6EEEF4B70}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CodeFirstWithExistingDB</RootNamespace>
-    <AssemblyName>CodeFirstWithExistingDB</AssemblyName>
+    <RootNamespace>DataAnnotation</RootNamespace>
+    <AssemblyName>DataAnnotation</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -55,73 +55,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authors.cs" />
-    <Compile Include="Courses.cs" />
+    <Compile Include="Author.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="Course.cs" />
     <Compile Include="C__MigrationHistory.cs" />
-    <Compile Include="ExistingDB.cs" />
-    <Compile Include="Genre.cs" />
-    <Compile Include="Migrations\202405260635529_ExistingDBContext.cs" />
-    <Compile Include="Migrations\202405260635529_ExistingDBContext.designer.cs">
-      <DependentUpon>202405260635529_ExistingDBContext.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405260947260_AddCategoryTable.cs" />
-    <Compile Include="Migrations\202405260947260_AddCategoryTable.designer.cs">
-      <DependentUpon>202405260947260_AddCategoryTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405261006120_AddColumnCategoryInCourses.cs" />
-    <Compile Include="Migrations\202405261006120_AddColumnCategoryInCourses.designer.cs">
-      <DependentUpon>202405261006120_AddColumnCategoryInCourses.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405261057213_AddDatePublishedColumnToCoursesTable.cs" />
-    <Compile Include="Migrations\202405261057213_AddDatePublishedColumnToCoursesTable.designer.cs">
-      <DependentUpon>202405261057213_AddDatePublishedColumnToCoursesTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405301441490_checkMigration.cs" />
-    <Compile Include="Migrations\202405301441490_checkMigration.designer.cs">
-      <DependentUpon>202405301441490_checkMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405301443577_deleteDateTimefromCourses.cs" />
-    <Compile Include="Migrations\202405301443577_deleteDateTimefromCourses.designer.cs">
-      <DependentUpon>202405301443577_deleteDateTimefromCourses.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405301451464_DeletedCategoriesFromDatabase.cs" />
-    <Compile Include="Migrations\202405301451464_DeletedCategoriesFromDatabase.designer.cs">
-      <DependentUpon>202405301451464_DeletedCategoriesFromDatabase.cs</DependentUpon>
+    <Compile Include="ExistingDBContext.cs" />
+    <Compile Include="Migrations\202406010914562_InitialDataModelMigration.cs" />
+    <Compile Include="Migrations\202406010914562_InitialDataModelMigration.designer.cs">
+      <DependentUpon>202406010914562_InitialDataModelMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tags.cs" />
-    <Compile Include="VideoGenreAssociation.cs" />
-    <Compile Include="Videos.cs" />
+    <Compile Include="Tag.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="11.1 Data Annotations Cheat Sheet.pdf" />
-    <None Include="11.2 Fluent API Cheat Sheet.pdf" />
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202405260635529_ExistingDBContext.resx">
-      <DependentUpon>202405260635529_ExistingDBContext.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405260947260_AddCategoryTable.resx">
-      <DependentUpon>202405260947260_AddCategoryTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405261006120_AddColumnCategoryInCourses.resx">
-      <DependentUpon>202405261006120_AddColumnCategoryInCourses.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405261057213_AddDatePublishedColumnToCoursesTable.resx">
-      <DependentUpon>202405261057213_AddDatePublishedColumnToCoursesTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405301441490_checkMigration.resx">
-      <DependentUpon>202405301441490_checkMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405301443577_deleteDateTimefromCourses.resx">
-      <DependentUpon>202405301443577_deleteDateTimefromCourses.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405301451464_DeletedCategoriesFromDatabase.resx">
-      <DependentUpon>202405301451464_DeletedCategoriesFromDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202406010914562_InitialDataModelMigration.resx">
+      <DependentUpon>202406010914562_InitialDataModelMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
